@@ -15,8 +15,8 @@ function updateBaseURL() {
 
   if (!newURL) {
     console.error('❌ Error: No URL provided.');
-    console.error('Usage: npm run update-url <your-cloudflare-tunnel-url>');
-    console.error('Example: npm run update-url https://my-store.trycloudflare.com');
+    console.error('Usage: npm run update-url <your-github-pages-url>');
+    console.error('Example: npm run update-url https://GITHUB_USER.github.io/REPOSITORY_NAME');
     process.exit(1);
   }
 
@@ -52,7 +52,7 @@ function updateBaseURL() {
     fs.writeFileSync(htmlPath, htmlContent, 'utf-8');
     console.log('✅ Updated index.html base URL');
   } else {
-    console.warn('⚠️ Warning: "const BASE_URL" declaration not found in index.html. Skipping HTML update.');
+    console.log('ℹ️ index.html uses the current page URL at runtime. Skipping HTML base URL update.');
   }
 
   // 3. Regenerate apps.json
