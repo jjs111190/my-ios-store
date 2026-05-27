@@ -1,0 +1,27 @@
+{
+  "name": "my-ios-store",
+  "version": "1.0.0",
+  "description": "Private iOS SideStore repository and download server",
+  "main": "scripts/generate-source.mjs",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-source.mjs",
+    "serve": "node scripts/serve-private.mjs",
+    "serve:public": "python3 -m http.server 8085",
+    "external": "bash scripts/start-external.sh",
+    "external:stop": "bash scripts/stop-external.sh",
+    "autostart": "bash scripts/install-autostart.sh",
+    "prepare:github": "bash scripts/prepare-github-pages.sh",
+    "tunnel": "cloudflared tunnel --url http://localhost:8085",
+    "update-url": "node scripts/update-base-url.mjs"
+  },
+  "keywords": [
+    "ios",
+    "sidestore",
+    "altstore",
+    "sideload"
+  ],
+  "author": "JaeSeok",
+  "license": "MIT",
+  "private": true
+}

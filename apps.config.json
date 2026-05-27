@@ -1,0 +1,70 @@
+{
+  "name": "JaeSeok Private Store",
+  "identifier": "com.jaeseok.my-ios-store",
+  "subtitle": "SideStore 전용 개인 테스트 앱 배포 페이지",
+  "description": "GitHub Pages에서 정적으로 호스팅하는 개인 iOS 앱 SideStore/AltStore 소스 저장소입니다.",
+  "baseURL": "https://jjs111190.github.io/my-ios-store",
+  "developerName": "JaeSeok",
+  "apps": [
+    {
+      "name": "SnapMoment",
+      "bundleIdentifier": "org.name.SnapMoment",
+      "ipa": "ipas/SnapMoment.ipa",
+      "icon": "icons/snapmoment.png",
+      "version": "1.0",
+      "buildVersion": "1",
+      "subtitle": "인생네컷 스타일 테스트 앱",
+      "description": "인생네컷 스타일 개인 테스트용 iOS 앱입니다."
+    },
+    {
+      "name": "RecordFlow",
+      "bundleIdentifier": "com.jaeseok0801.RecordFlow",
+      "ipa": "ipas/RecordFlow.ipa",
+      "icon": "icons/recordflow.png",
+      "version": "1.10.0",
+      "buildVersion": "1",
+      "subtitle": "AI 노트 정리 테스트 앱",
+      "description": "AI 기술을 활용한 개인용 노트 및 생각 정리 테스트 앱입니다."
+    },
+    {
+      "name": "Aura",
+      "bundleIdentifier": "com.jaeseok.aura",
+      "ipa": "ipas/Aura.ipa",
+      "icon": "icons/aura.png",
+      "version": "1.0.0",
+      "buildVersion": "1",
+      "subtitle": "근거리 소셜 테스트 앱",
+      "description": "근거리 무선 통신을 활용하여 친구를 매칭하고 소통하는 개인 테스트 앱입니다."
+    },
+    {
+      "name": "NeoMini",
+      "bundleIdentifier": "com.neomini.app",
+      "ipa": "ipas/NeoMini.ipa",
+      "icon": "icons/neomini.png",
+      "version": "1.0",
+      "buildVersion": "1",
+      "subtitle": "미니홈피 테스트 앱",
+      "description": "추억의 감성을 현대적인 UI로 해석한 모바일 미니홈피 개인 테스트 앱입니다."
+    },
+    {
+      "name": "Cutory",
+      "bundleIdentifier": "com.jaeseok.cutory",
+      "ipa": "ipas/Cutory.ipa",
+      "icon": "icons/cutory.png",
+      "version": "1.0.0",
+      "buildVersion": "1",
+      "subtitle": "도시 탐험 미션 테스트 앱",
+      "description": "도시 곳곳을 누비며 퀘스트와 미션을 수행하는 GPS 기반 개인 테스트 앱입니다."
+    },
+    {
+      "name": "FlowWorks",
+      "bundleIdentifier": "com.flowworks.app",
+      "ipa": "ipas/FlowWorks.ipa",
+      "icon": "icons/flowworks.png",
+      "version": "1.0",
+      "buildVersion": "1",
+      "subtitle": "워크플로우 관리 테스트 앱",
+      "description": "FlowWorks 프로젝트에서 빌드된 개인 테스트용 iOS 앱입니다."
+    }
+  ]
+}

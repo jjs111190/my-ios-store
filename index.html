@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>JaeSeok Private iOS Store</title>
+  <!-- Google Fonts for Modern Premium Look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #F2F2F7;
+      --card-bg: #FFFFFF;
+      --text-main: #1C1C1E;
+      --text-muted: #8E8E93;
+      --primary: #007AFF;
+      --primary-hover: #0056B3;
+      --success: #34C759;
+      --warning: #FF9500;
+      --border-radius-card: 16px;
+      --border-radius-btn: 12px;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 20px 16px 40px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .store-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 22%;
+      /* Squircle */
+      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.15);
+      margin-bottom: 16px;
+      background-color: var(--primary);
+      object-fit: cover;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      background-color: rgba(0, 122, 255, 0.1);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:active {
+      transform: scale(0.995);
+    }
+
+    /* Source Box styling */
+    .source-box {
+      background: linear-gradient(135deg, #007AFF 0%, #0056B3 100%);
+      color: #FFFFFF;
+      text-align: center;
+      border: none;
+    }
+
+    .source-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .source-box p {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+
+    .source-url-container {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-family: monospace;
+      font-size: 12px;
+      word-break: break-all;
+      margin-bottom: 16px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .source-url-text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 8px;
+    }
+
+    .btn-copy {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .btn-copy:hover {
+      opacity: 1;
+    }
+
+    .source-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    /* Main CTA Buttons */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: var(--border-radius-btn);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.1s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary-action {
+      background-color: #FFFFFF;
+      color: var(--primary);
+    }
+
+    .btn-primary-action:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* App Items List */
+    .apps-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      padding-left: 4px;
+      color: var(--text-main);
+    }
+
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .app-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 22%;
+      /* squircle */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+      background-color: #E5E5EA;
+    }
+
+    .app-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .app-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .app-description {
+      font-size: 13px;
+      color: #3A3A3C;
+      line-height: 1.4;
+      background-color: #F8F8FA;
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+
+    .app-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-install {
+      background-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-install:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-download {
+      background-color: #E5E5EA;
+      color: var(--text-main);
+    }
+
+    .btn-download:hover {
+      background-color: #D1D1D6;
+    }
+
+    /* Warning/Notice section */
+    .notice-card {
+      background-color: rgba(255, 149, 0, 0.05);
+      border: 1px solid rgba(255, 149, 0, 0.15);
+      border-radius: var(--border-radius-card);
+      padding: 16px;
+      margin-top: 32px;
+    }
+
+    .notice-title {
+      color: var(--warning);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notice-list {
+      list-style-type: none;
+    }
+
+    .notice-list li {
+      font-size: 12px;
+      color: #48484A;
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .notice-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--warning);
+      font-weight: bold;
+    }
+
+    .notice-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 1000;
+      opacity: 0;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Loader skeleton */
+    .loader {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .spinner {
+      border: 3px solid rgba(0, 0, 0, 0.05);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border-left-color: var(--primary);
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error-box {
+      background-color: rgba(255, 59, 48, 0.05);
+      border: 1px solid rgba(255, 59, 48, 0.15);
+      color: #FF3B30;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .account-row {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .account-row a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .guide-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .guide-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .guide-card h3 {
+      font-size: 14px;
+      margin: 18px 0 8px;
+    }
+
+    .guide-card ol,
+    .guide-card ul {
+      padding-left: 20px;
+    }
+
+    .guide-card li {
+      font-size: 13px;
+      color: #3A3A3C;
+      margin-bottom: 8px;
+    }
+
+    .guide-card code {
+      background: #F2F2F7;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    .guide-note {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(52, 199, 89, 0.08);
+      color: #1D6B34;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .auth-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: var(--bg-color);
+    }
+
+    .auth-card {
+      width: min(420px, 100%);
+      background: var(--card-bg);
+      border-radius: var(--border-radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .auth-card p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .auth-card label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .auth-card input {
+      width: 100%;
+      height: 44px;
+      border: 1px solid #D1D1D6;
+      border-radius: 10px;
+      padding: 0 12px;
+      margin-bottom: 14px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .auth-card input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.12);
+    }
+
+    .auth-error {
+      display: none;
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255, 59, 48, 0.08);
+      color: #B42318;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .auth-error.show {
+      display: block;
+    }
+
+    .is-locked .container,
+    .is-locked .toast {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="is-locked">
+
+  <div class="auth-screen" id="auth-screen">
+    <form class="auth-card" id="auth-form">
+      <h2>Private iOS Store</h2>
+      <p>테스트 앱 다운로드 페이지입니다. 관리자 로그인 후 사용할 수 있습니다.</p>
+      <div class="auth-error" id="auth-error">아이디 또는 비밀번호가 맞지 않습니다.</div>
+      <label for="auth-username">아이디</label>
+      <input id="auth-username" name="username" autocomplete="username" required>
+      <label for="auth-password">비밀번호</label>
+      <input id="auth-password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-install" style="width:100%;">로그인</button>
+    </form>
+  </div>
+
+  <div class="container">
+
+    <!-- Store Header -->
+    <header>
+      <img src="icons/default.png" alt="Store Logo" class="store-logo" id="header-logo">
+      <h1>JaeSeok Private Store</h1>
+      <div class="subtitle">SideStore 전용 개인 테스트 앱 배포 페이지</div>
+      <span class="badge">Self-Hosted Repository</span>
+      <div class="account-row">
+        <a href="#" id="btn-logout">로그아웃</a>
+      </div>
+    </header>
+
+    <!-- Source URL Box (Card 1) -->
+    <div class="card source-box">
+      <h2>SideStore 소스 추가</h2>
+      <p>아래 주소를 SideStore의 Sources 탭에 등록하면 간편하게 앱을 관리할 수 있습니다.</p>
+
+      <div class="source-url-container">
+        <span class="source-url-text" id="source-url-display">http://localhost:8080/apps.json</span>
+        <button class="btn-copy" id="btn-copy-url" title="주소 복사">
+          <!-- Copy Icon SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="source-actions">
+        <button class="btn btn-primary-action" id="btn-add-source">
+          📥 SideStore에 소스 추가하기
+        </button>
+      </div>
+    </div>
+
+    <!-- Apps List Title -->
+    <div class="apps-title">배포 가능한 앱 목록</div>
+
+    <!-- Dynamic Apps Section -->
+    <div id="apps-container">
+      <div class="loader">
+        <div class="spinner"></div>
+        앱 목록을 불러오는 중...
+      </div>
+    </div>
+
+    <!-- Instructions / Warning Section -->
+    <div class="notice-card">
+      <div class="notice-title">
+        <!-- Warning Icon SVG -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        설치 전 필수 확인 사항
+      </div>
+      <ul class="notice-list">
+        <li>iPhone에 <strong>SideStore</strong> 앱이 미리 설치되어 있고 활성화되어 있어야 합니다.</li>
+        <li>이 페이지는 무료 Apple ID 개발 계정을 기준으로 설계되었습니다. 설치된 앱은 <strong>7일마다</strong> SideStore 앱을 통해 만료를 갱신(Refresh)해야 작동을
+          유지합니다.</li>
+        <li>정적 GitHub Pages 방식에서는 로그인 화면이 테스트용 잠금입니다. 링크를 아는 사용자는 파일 URL에 직접 접근할 수 있습니다.</li>
+        <li>iOS 보안 정책상 웹사이트에서 곧바로 앱 설치가 완료되지 않으며, 링크를 누르면 SideStore 앱으로 전환되어 최종 설치를 승인해야 합니다.</li>
+        <li>이 저장소는 개인 소유 테스트용 서버입니다. 외부 공유 시 로컬 IP나 터널 주소가 노출될 수 있으므로 허용되지 않은 사용자에게 공개하지 마십시오.</li>
+      </ul>
+    </div>
+
+    <section class="guide-card" id="sidestore-guide">
+      <h2>SideStore 완전 사용 가이드</h2>
+
+      <h3>1. iPhone 준비</h3>
+      <ol>
+        <li>SideStore 공식 설치 안내 기준으로 LocalDevVPN을 준비합니다. 구버전 안내를 따르는 경우에만 WireGuard/StosVPN을 사용합니다.</li>
+        <li>Mac에서 SideStore 공식 사이트의 최신 SideStore IPA를 받은 뒤 AltServer 또는 SideServer로 iPhone에 설치합니다.</li>
+        <li>iOS 16 이상이면 <code>설정 > 개인정보 보호 및 보안 > 개발자 모드</code>를 켜고 재부팅합니다.</li>
+        <li><code>설정 > 일반 > VPN 및 기기 관리</code>에서 Apple ID 개발자 앱을 신뢰합니다.</li>
+      </ol>
+
+      <h3>2. 페어링 파일과 VPN</h3>
+      <ol>
+        <li>SideStore 설치 과정에서 만든 <code>.mobiledevicepairing</code> 파일을 AirDrop 또는 파일 앱으로 iPhone에 보냅니다.</li>
+        <li>SideStore 첫 실행 시 해당 페어링 파일을 선택합니다.</li>
+        <li>앱 설치와 Refresh 전에는 LocalDevVPN 또는 설정한 SideStore용 VPN을 켭니다.</li>
+        <li>SideStore의 Settings 탭에서 Apple ID로 로그인한 뒤 My Apps에서 Refresh All이 되는지 확인합니다.</li>
+      </ol>
+
+      <h3>3. 이 스토어에서 설치</h3>
+      <ol>
+        <li>GitHub Pages에 올라간 이 페이지를 iPhone Safari에서 열고 <code>admin</code> 계정으로 로그인합니다.</li>
+        <li>앱을 추가하거나 IPA를 교체한 뒤에는 <code>npm run update-url https://사용자명.github.io/저장소명</code>과 <code>npm run generate</code>를 실행하고 GitHub에 push합니다.</li>
+        <li>상단의 SideStore 소스 주소를 복사하거나 소스 추가 버튼을 눌러 SideStore Sources에 등록합니다.</li>
+        <li>앱 카드의 SideStore 설치 버튼을 누르거나 SideStore의 Sources 탭에서 앱을 선택해 설치합니다.</li>
+      </ol>
+
+      <h3>4. 7일 만료 관리</h3>
+      <ul>
+        <li>무료 Apple ID로 설치한 앱은 보통 7일마다 Refresh가 필요합니다.</li>
+        <li>만료 전에 LocalDevVPN 또는 SideStore용 VPN을 켜고 SideStore에서 Refresh All을 누릅니다.</li>
+        <li>SideStore 자체가 만료되면 Mac에 연결해 AltServer 또는 SideServer로 SideStore를 다시 설치해야 합니다.</li>
+      </ul>
+
+      <div class="guide-note">설치가 실패하면 먼저 LocalDevVPN/VPN 연결, SideStore 로그인, 페어링 파일, 소스 URL의 HTTPS 주소와 토큰 포함 여부를 확인하세요.</div>
+    </section>
+
+  </div>
+
+  <!-- Toast Element -->
+  <div class="toast" id="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="3" stroke-linecap="round"
+      stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toast-message">주소가 복사되었습니다.</span>
+  </div>
+
+  <script>
+    const STATIC_USER = "admin";
+    const STATIC_PASS = "admin8579";
+    const AUTH_KEY = "jaeseok-ios-store-auth";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const authScreen = document.getElementById("auth-screen");
+      const authForm = document.getElementById("auth-form");
+      const authUsername = document.getElementById("auth-username");
+      const authPassword = document.getElementById("auth-password");
+      const authError = document.getElementById("auth-error");
+      const btnLogout = document.getElementById("btn-logout");
+      const sourceUrlDisplay = document.getElementById("source-url-display");
+      const btnCopyUrl = document.getElementById("btn-copy-url");
+      const btnAddSource = document.getElementById("btn-add-source");
+      const appsContainer = document.getElementById("apps-container");
+      const toast = document.getElementById("toast");
+      const toastMessage = document.getElementById("toast-message");
+      const headerLogo = document.getElementById("header-logo");
+
+      const pageBaseURL = new URL(".", window.location.href).href.replace(/\/$/, "");
+      const fullAppsJsonURL = `${pageBaseURL}/apps.json`;
+
+      if (localStorage.getItem(AUTH_KEY) === "ok") {
+        unlock();
+      } else {
+        authUsername.focus();
+      }
+
+      authForm.addEventListener("submit", event => {
+        event.preventDefault();
+        if (authUsername.value === STATIC_USER && authPassword.value === STATIC_PASS) {
+          localStorage.setItem(AUTH_KEY, "ok");
+          authPassword.value = "";
+          authError.classList.remove("show");
+          unlock();
+          return;
+        }
+        authError.classList.add("show");
+        authPassword.select();
+      });
+
+      btnLogout.addEventListener("click", event => {
+        event.preventDefault();
+        localStorage.removeItem(AUTH_KEY);
+        document.body.classList.add("is-locked");
+        authScreen.style.display = "grid";
+        authUsername.focus();
+      });
+
+      function unlock() {
+        document.body.classList.remove("is-locked");
+        authScreen.style.display = "none";
+      }
+
+      // Update UI Header elements
+      sourceUrlDisplay.textContent = fullAppsJsonURL;
+      headerLogo.src = `${pageBaseURL}/icons/default.png`;
+
+      // Copy Clipboard Handler
+      btnCopyUrl.addEventListener("click", () => {
+        navigator.clipboard.writeText(fullAppsJsonURL).then(() => {
+          showToast("소스 주소가 클립보드에 복사되었습니다.");
+        }).catch(err => {
+          // Fallback
+          const textarea = document.createElement("textarea");
+          textarea.value = fullAppsJsonURL;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand("copy");
+            showToast("소스 주소가 클립보드에 복사되었습니다.");
+          } catch (e) {
+            console.error("Failed to copy", e);
+          }
+          document.body.removeChild(textarea);
+        });
+      });
+
+      // SideStore Add Source deep link
+      btnAddSource.addEventListener("click", () => {
+        const sideStoreSourceUrl = `sidestore://source?url=${encodeURIComponent(fullAppsJsonURL)}`;
+        window.location.href = sideStoreSourceUrl;
+      });
+
+      // Toast Notification show helper
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      // Format file size (e.g. 15.4 MB)
+      function formatSize(bytes) {
+        if (!bytes || bytes === 0) return "크기 정보 없음";
+        const mb = bytes / (1024 * 1024);
+        return `${mb.toFixed(1)} MB`;
+      }
+
+      // Fetch apps.json dynamically
+      fetch("./apps.json")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          appsContainer.innerHTML = "";
+
+          if (!data.apps || data.apps.length === 0) {
+            appsContainer.innerHTML = `
+              <div class="card" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                📂 현재 등록된 앱이 없습니다.<br>
+                <small style="display:block; margin-top:8px;">ipas/ 폴더에 .ipa 파일을 추가하고 npm run generate 명령을 실행하세요.</small>
+              </div>
+            `;
+            return;
+          }
+
+          data.apps.forEach(app => {
+            // Get latest version
+            const latestVer = app.versions[0];
+            const sizeString = formatSize(latestVer.size);
+
+            const absoluteDownloadURL = latestVer.downloadURL.startsWith('http')
+              ? latestVer.downloadURL
+              : `${pageBaseURL}/${latestVer.downloadURL}`;
+
+            const absoluteIconURL = app.iconURL.startsWith('http')
+              ? app.iconURL
+              : `${pageBaseURL}/${app.iconURL}`;
+
+            // Create sideStore deep links
+            const sidestoreInstallUrl = `sidestore://install?url=${encodeURIComponent(absoluteDownloadURL)}`;
+
+            // Create card HTML
+            const card = document.createElement("div");
+            card.className = "card app-card";
+            card.innerHTML = `
+              <div class="app-header">
+                <img src="${absoluteIconURL}" alt="${app.name} Icon" class="app-icon" onerror="this.src='${pageBaseURL}/icons/default.png'">
+                <div class="app-info">
+                  <div class="app-name">${app.name}</div>
+                  <div class="app-meta">
+                    <span>Bundle ID: <code>${app.bundleIdentifier}</code></span>
+                    <span>Version: ${latestVer.version} (${latestVer.buildVersion}) • ${sizeString}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="app-description">${app.localizedDescription}</div>
+              <div class="app-actions">
+                <a href="${sidestoreInstallUrl}" class="btn btn-install">📥 SideStore 설치</a>
+                <a href="${absoluteDownloadURL}" class="btn btn-download" download>💾 IPA 다운로드</a>
+              </div>
+            `;
+            appsContainer.appendChild(card);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching apps.json:", error);
+          appsContainer.innerHTML = `
+            <div class="error-box">
+              <strong>⚠️ 앱 목록 로딩 오류</strong><br>
+              apps.json 파일을 불러오지 못했습니다.<br>
+              <span style="font-size: 11px; margin-top:6px; display:block;">
+                NPM 스크립트 'npm run generate'를 통해 apps.json 파일이 정상적으로 빌드되었는지 확인하세요.
+              </span>
+            </div>
+          `;
+        });
+    });
+  </script>
+</body>
+
+</html>

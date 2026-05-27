@@ -1,0 +1,83 @@
+{
+  "name": "JaeSeok Private Store",
+  "identifier": "com.jaeseok.my-ios-store",
+  "sourceURL": "https://jjs111190.github.io/my-ios-store/apps.json",
+  "subtitle": "SideStore 전용 개인 테스트 앱 배포 페이지",
+  "description": "GitHub Pages에서 정적으로 호스팅하는 개인 iOS 앱 SideStore/AltStore 소스 저장소입니다.",
+  "iconURL": "https://jjs111190.github.io/my-ios-store/icons/default.png",
+  "tintColor": "#007AFF",
+  "apps": [
+    {
+      "name": "SnapMoment",
+      "bundleIdentifier": "org.name.SnapMoment",
+      "developerName": "JaeSeok",
+      "subtitle": "인생네컷 스타일 테스트 앱",
+      "localizedDescription": "인생네컷 스타일 개인 테스트용 iOS 앱입니다.",
+      "iconURL": "https://jjs111190.github.io/my-ios-store/icons/snapmoment.png",
+      "versions": [
+        {
+          "version": "1.0",
+          "buildVersion": "1",
+          "date": "2026-05-27",
+          "downloadURL": "https://jjs111190.github.io/my-ios-store/ipas/SnapMoment.ipa",
+          "localizedDescription": "인생네컷 스타일 개인 테스트용 iOS 앱입니다.",
+          "size": 79063854
+        }
+      ]
+    },
+    {
+      "name": "RecordFlow",
+      "bundleIdentifier": "com.jaeseok0801.RecordFlow",
+      "developerName": "JaeSeok",
+      "subtitle": "AI 노트 정리 테스트 앱",
+      "localizedDescription": "AI 기술을 활용한 개인용 노트 및 생각 정리 테스트 앱입니다.",
+      "iconURL": "https://jjs111190.github.io/my-ios-store/icons/recordflow.png",
+      "versions": [
+        {
+          "version": "1.10.0",
+          "buildVersion": "1",
+          "date": "2026-05-27",
+          "downloadURL": "https://jjs111190.github.io/my-ios-store/ipas/RecordFlow.ipa",
+          "localizedDescription": "AI 기술을 활용한 개인용 노트 및 생각 정리 테스트 앱입니다.",
+          "size": 32979407
+        }
+      ]
+    },
+    {
+      "name": "NeoMini",
+      "bundleIdentifier": "com.neomini.app",
+      "developerName": "JaeSeok",
+      "subtitle": "미니홈피 테스트 앱",
+      "localizedDescription": "추억의 감성을 현대적인 UI로 해석한 모바일 미니홈피 개인 테스트 앱입니다.",
+      "iconURL": "https://jjs111190.github.io/my-ios-store/icons/neomini.png",
+      "versions": [
+        {
+          "version": "1.0",
+          "buildVersion": "1",
+          "date": "2026-05-27",
+          "downloadURL": "https://jjs111190.github.io/my-ios-store/ipas/NeoMini.ipa",
+          "localizedDescription": "추억의 감성을 현대적인 UI로 해석한 모바일 미니홈피 개인 테스트 앱입니다.",
+          "size": 9938199
+        }
+      ]
+    },
+    {
+      "name": "FlowWorks",
+      "bundleIdentifier": "com.flowworks.app",
+      "developerName": "JaeSeok",
+      "subtitle": "워크플로우 관리 테스트 앱",
+      "localizedDescription": "FlowWorks 프로젝트에서 빌드된 개인 테스트용 iOS 앱입니다.",
+      "iconURL": "https://jjs111190.github.io/my-ios-store/icons/flowworks.png",
+      "versions": [
+        {
+          "version": "1.0",
+          "buildVersion": "1",
+          "date": "2026-05-27",
+          "downloadURL": "https://jjs111190.github.io/my-ios-store/ipas/FlowWorks.ipa",
+          "localizedDescription": "FlowWorks 프로젝트에서 빌드된 개인 테스트용 iOS 앱입니다.",
+          "size": 527355
+        }
+      ]
+    }
+  ]
+}
